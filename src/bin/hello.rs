@@ -1,7 +1,6 @@
 use std::fmt;
 
-struct Structure2(i32);
-impl fmt::Display for Structure2 {
+impl fmt::Display for Structure {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{}", self.0)
     }
@@ -16,20 +15,23 @@ struct Deep(Structure);
 #[derive(Debug)]
 struct Person<'a> {
     name: &'a str,
-    age: u8
+    age: u8,
 }
 
 fn main() {
     println!("Hello World!");
     println!("I'm a Rustacean!");
 
-    let x = 5 +90 + 5;
+    let x = 5 + 90 + 5;
     println!("Is `x` 10 or 100? x = {}", x);
 
     println!("{} days", 31);
     println!("{0}, this is {1}. {1}, this is {0}.", "Claire", "Noah");
-    println!("{s} {v} {o}", o="dog", s="fox", v="jump over");
-    println!("there are {:b} types of people: those who know binary and those who don't.", 2);
+    println!("{s} {v} {o}", o = "dog", s = "fox", v = "jump over");
+    println!(
+        "there are {:b} types of people: those who know binary and those who don't.",
+        2
+    );
 
     let pi = 3.14159265;
 
@@ -46,6 +48,6 @@ fn main() {
 
     let name = "Claire";
     let age = 21;
-    let claire = Person {name, age};
+    let claire = Person { name, age };
     println!("{:#?}", claire);
 }

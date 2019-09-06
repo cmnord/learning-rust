@@ -8,7 +8,9 @@ impl fmt::Display for List {
         write!(f, "[")?;
 
         for (count, v) in vec.iter().enumerate() {
-            if count != 0 { write!(f, ", ")?; }
+            if count != 0 {
+                write!(f, ", ")?;
+            }
             write!(f, "{}: {}", count, v)?;
         }
 
@@ -20,12 +22,18 @@ impl fmt::Display for List {
 struct Color {
     red: u8,
     green: u8,
-    blue: u8
+    blue: u8,
 }
 
 impl fmt::Display for Color {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "RGB ({r}, {g}, {b}) 0x{r:02X}{g:02X}{b:02X}", r=self.red, g=self.green, b=self.blue)
+        write!(
+            f,
+            "RGB ({r}, {g}, {b}) 0x{r:02X}{g:02X}{b:02X}",
+            r = self.red,
+            g = self.green,
+            b = self.blue
+        )
     }
 }
 
@@ -34,10 +42,24 @@ fn main() {
     println!("{}", v);
 
     for color in [
-        Color { red: 128, green: 255, blue: 90},
-        Color { red: 0, green: 3, blue: 254},
-        Color { red: 0, green: 0, blue: 0}
-    ].iter() {
+        Color {
+            red: 128,
+            green: 255,
+            blue: 90,
+        },
+        Color {
+            red: 0,
+            green: 3,
+            blue: 254,
+        },
+        Color {
+            red: 0,
+            green: 0,
+            blue: 0,
+        },
+    ]
+    .iter()
+    {
         println!("{}", *color);
     }
 }

@@ -11,14 +11,14 @@ fn lose_game(_p: PlayingState) -> LostState {
     LostState
 }
 
-fn print_won(w: WonState) -> WonState {
+fn print_won(w: &WonState) -> &WonState {
     println!("Won!");
-    w
+    &w
 }
 
-fn print_lost(l: LostState) -> LostState {
+fn print_lost(l: &LostState) -> &LostState {
     println!("Lost!");
-    l
+    &l
 }
 
 
@@ -29,7 +29,8 @@ fn main() {
 	let game0 = PlayingState;
 	let won0 = win_game(game0);
 	// print_lost(won0);			// This should be a compile-time error
-	print_won(won0);
+	print_won(&won0);
+	print_won(&won0);
 
 	// lose_game(game0);   		// This should be a compile-time error
 	// lose_game(won0);   		// This should be a compile-time error
@@ -39,6 +40,7 @@ fn main() {
 	println!("game 1 starting");
 	let game1 = PlayingState;
 	let lost1 = lose_game(game1);
-	print_lost(lost1);
+	print_lost(&lost1);
+	print_lost(&lost1);
 	
 }

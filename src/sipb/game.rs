@@ -1,4 +1,11 @@
 struct PlayingState;
+
+impl Drop for PlayingState {
+	fn drop(&mut self) {
+		println!("Dropping a Playing")
+	}
+}
+
 struct WonState;
 struct LostState;
 

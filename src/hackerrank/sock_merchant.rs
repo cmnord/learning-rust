@@ -1,5 +1,6 @@
 use std::io::{self, Read};
 
+#[allow(dead_code)]
 fn sock_merchant(num_socks: usize, mut socks: Vec<i32>) -> i32 {
     socks.sort();
     println!("socks is {:?}", socks);

@@ -1,5 +1,6 @@
 use std::io::{self, Read};
 
+#[allow(dead_code)]
 fn counting_valleys(steps: &str) -> i32 {
     let mut height = 0;
     let mut in_valley = false;

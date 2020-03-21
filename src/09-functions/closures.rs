@@ -155,22 +155,27 @@ fn closure_input_functions() {
     call_me(function);
 }
 
-fn create_fn() -> Box<dyn Fn()> {
+fn create_fn() -> impl Fn() {
     let text = "Fn".to_owned();
-    Box::new(move || println!("This is a: {}", text))
+    move || println!("This is a: {}", text)
 }
 
-fn create_fnmut() -> Box<dyn FnMut()> {
+fn create_fnmut() -> impl FnMut() {
     let text = "FnMut".to_owned();
-    Box::new(move || println!("This is a: {}", text))
+    move || println!("This is a: {}", text)
 }
 
-// problematic: Rust only supports returning non-generic types rn.
-// Get around this via boxing.
+fn create_fnonce() -> impl FnOnce() {
+    let text = "FnOnce".to_owned();
+    move || println!("This is a: {}", text)
+}
+
 fn closure_output_functions() {
     let fn_plain = create_fn();
     let mut fn_mut = create_fnmut();
+    let fn_once = create_fnonce();
 
     fn_plain();
     fn_mut();
+    fn_once();
 }

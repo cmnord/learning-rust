@@ -1,3 +1,7 @@
+// With these attributes, we no longer need to pass the --crate-type flag to Rust.
+#![crate_type = "lib"]
+#![crate_name = "rary"]
+
 pub fn public_function() {
     println!("called rary's `public_function()`");
 }
